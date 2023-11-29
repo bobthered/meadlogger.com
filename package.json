@@ -12,9 +12,10 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"prepublishOnly": "npm run build",
-		"release": "standard-version && npx gh-pages -d build -t true && git push --follow-tags origin main"
+		"release": "standard-version && git push --follow-tags origin main"
 	},
 	"devDependencies": {
+		"@bobthered/tailwindcss-palette-generator": "^3.2.3",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.27.4",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
