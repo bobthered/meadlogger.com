@@ -15,7 +15,10 @@ const config = {
 					'violet',
 					'slate'
 				]
-			})
+			}),
+			fontFamily: {
+				sans: ['Inter', 'sans-serif']
+			}
 		}
 	},
 
