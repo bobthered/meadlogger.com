@@ -20,7 +20,7 @@
 	<Form use={[enhance]}>
 		<div class="flex flex-col items-center space-y-4 mx-auto">
 			<img alt="Mead Logger" class="w-16 h-16" src="/icons/icon.svg" />
-			<H1 class="text-violet-500 font-logo font-light text-[2.5rem] leading-[2.5rem]">
+			<H1 class="text-violet-500 font-logo font-light text-[2.5rem] leading-[2.5rem] uppercase">
 				Mead Logger
 			</H1>
 		</div>
