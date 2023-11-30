@@ -16,7 +16,7 @@
 	let password = '';
 </script>
 
-<Card>
+<Card class="w-full max-w-[375px]">
 	<Form use={[enhance]}>
 		<div class="flex flex-col items-center space-y-4 mx-auto">
 			<img alt="Mead Logger" class="w-16 h-16" src="/icons/icon.svg" />
