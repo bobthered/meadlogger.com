@@ -1,6 +1,6 @@
 {
 	"name": "meadlogger.com",
-	"version": "0.0.3",
+	"version": "0.0.2",
 	"private": true,
 	"scripts": {
 		"dev": "npx prisma db push && vite dev",
@@ -12,7 +12,8 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"prepublishOnly": "npm run build",
-		"release": "standard-version && git push --follow-tags origin main"
+		"release": "standard-version && git push --follow-tags origin main",
+		"postinstall": "prisma generate"
 	},
 	"devDependencies": {
 		"@bobthered/tailwindcss-palette-generator": "^3.2.3",
