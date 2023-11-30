@@ -2,7 +2,10 @@ const { tailwindcssPaletteGenerator } = require("@bobthered/tailwindcss-palette-
 
 /** @type {import('tailwindcss').Config}*/
 const config = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: [
+		'./src/**/*.{html,js,svelte,ts}',
+		'./node_modules/sveltewind/**/*.{html,js,svelte,ts}'
+	],
 
 	theme: {
 		extend: {
@@ -17,7 +20,8 @@ const config = {
 				]
 			}),
 			fontFamily: {
-				sans: ['Inter', 'sans-serif']
+				logo: ['Barlow Condensed'],
+				sans: ['Montserrat', 'sans-serif'],
 			}
 		}
 	},

@@ -9,7 +9,8 @@ export default defineConfig({
 			$actions: resolve('./src/actions'),
 			$components: resolve('./src/components'),
 			$icons: resolve('./src/icons'),
-			$stores: resolve('./src/stores')
+			$stores: resolve('./src/stores'),
+			$transitions: resolve('./src/transitions')
 		}
 	},
 	test: {

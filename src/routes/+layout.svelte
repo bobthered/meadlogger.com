@@ -1,19 +1,12 @@
 <script lang="ts">
-	import { Pwa } from '$components';
+	import { Pwa, Title, Toasts } from '$components';
 	import '../app.pcss';
 </script>
 
-<Pwa>
-	<link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
-	<link rel="alternate icon" href="/icons/icon-16x16.png" />
-	<link rel="apple-touch-icon" href="/icons/icon-apple-touch.png" />
-	<link rel="manifest" href="/manifest.json" />
-	<meta
-		name="viewport"
-		content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover"
-	/>
-	<meta name="theme-color" content="#FFF" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-</Pwa>
+<Pwa />
+<Title />
+<Toasts />
+<div
+	class="absolute top-0 left-0 w-[100dvw] h-[100dvh] bg-gradient-to-br z-[-1] from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950"
+/>
 <slot />
