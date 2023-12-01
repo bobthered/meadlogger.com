@@ -14,9 +14,10 @@ theme.set({
 		'bg-transparent shadow-[inset_0_0_0_rgba(0,0,0,0)] text-current font-medium hover:bg-slate-900/10 focus:bg-slate-900/10 focus:ring-slate-900/5 dark:hover:bg-slate-50/10 dark:focus:bg-slate-50/10 dark:focus:ring-slate-50/5',
 	buttonXS: 'scale-[.75]',
 	form: 'space-y-8',
-	header: 'ring-0 lg:ring-1 pb-[env(safe-area-inset-bottom)] lg:pb-0',
+	header:
+		'ring-0 lg:ring-1 pb-[env(safe-area-inset-bottom)] lg:pb-0 bg-violet-500 lg:bg-transparent',
 	legend: 'text-sm',
-	nav: 'flex-row bg-violet-500 lg:flex-col lg:fixed lg:min-h-[100dvh] lg:max-h-[100dvh] lg:top-0 lg:left-0 lg:transition lg:duration-200 lg:pt-12 lg:bg-white dark:lg:bg-slate-950 lg:justify-between',
+	nav: 'flex-row bg-violet-500 lg:flex-col lg:fixed lg:min-h-[100svh] lg:h-[100lvh] lg:max-h-[100svh] lg:h-[100lvh] lg:top-0 lg:left-0 lg:transition lg:duration-200 lg:pt-12 lg:bg-white dark:lg:bg-slate-950 lg:justify-between',
 	tr: 'even:bg-slate-900/5 dark:even:bg-slate-50/5'
 });
 

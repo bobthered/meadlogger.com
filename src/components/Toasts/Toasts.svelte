@@ -22,7 +22,9 @@
 	subscribe((state) => (toasts = state));
 </script>
 
-<div class="fixed z-[100] top-0 left-0 w-[100dvw] h-[100dvh] overflow-hidden pointer-events-none">
+<div
+	class="fixed z-[100] top-0 left-0 w-[100svw] lg:w-[100lvw] h-[100svh] lg:h-[100lvh] overflow-hidden pointer-events-none"
+>
 	{#each toasts as text, i}
 		{@const reverseIndex = toasts.length - i}
 		{@const scale = reverseIndex > maxVisible ? scales.rest : scales[reverseIndex - 1]}

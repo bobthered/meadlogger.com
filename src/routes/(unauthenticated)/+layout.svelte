@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<div class="min-h-[100dvh] flex lg:grid lg:grid-cols-2">
+<div class="min-h-[100svh] lg:h-[100lvh] flex lg:grid lg:grid-cols-2">
 	<div class="hidden lg:block relative overflow-hidden">
 		<img
 			alt="Honey"
@@ -9,7 +9,7 @@
 			src="/art-rachen-Asj5DFw8UAw-unsplash.jpg"
 		/>
 	</div>
-	<div class="min-h-[100dvh] flex-grow flex items-center justify-center p-8">
+	<div class="min-h-[100svh] lg:h-[100lvh] flex-grow flex items-center justify-center p-8">
 		<slot />
 	</div>
 </div>
