@@ -21,7 +21,8 @@
 			? 'lg:bg-violet-500 lg:text-violet-900 lg:hover:bg-violet-500 lg:focus:bg-violet-500 lg:cursor-default'
 			: undefined,
 		isShown ? undefined : 'hidden',
-		isShownLG ? 'lg:block' : 'lg:hidden'
+		isShownLG ? 'lg:block' : 'lg:hidden',
+		$$props.class
 	);
 	$: tabindex = !isOpen || $page.url.pathname === href ? '-1' : undefined;
 </script>

@@ -55,11 +55,14 @@
 	on:click={toggle}
 />
 <Nav class={twMerge(isOpen ? 'lg:translate-x-0' : 'lg:-translate-x-full')}>
-	<div class="flex flex-grow lg:flex-col lg:flex-grow-0">
+	<div class="hidden lg:flex lg:flex-col">
 		{#each navs as { href, isShown, isShownLG, label, src }}
 			<NavItem {close} {href} {isOpen} {isShown} {isShownLG} {label} {src} />
 		{/each}
 	</div>
+	{#each navs as { href, isShown, isShownLG, label, src }}
+		<NavItem class="lg:hidden" {close} {href} {isOpen} {isShown} {isShownLG} {label} {src} />
+	{/each}
 	<NavItem
 		{close}
 		href="/sign-out"
