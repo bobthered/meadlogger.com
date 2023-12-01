@@ -6,7 +6,9 @@
 </script>
 
 <div class="flex min-h-[100dvh] max-h-[100dvh] flex-col overflow-hidden lg:flex-row-reverse">
-	<div class="flex flex-col flex-grow overflow-auto">
+	<div
+		class="flex flex-col flex-grow overflow-auto pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]"
+	>
 		<slot />
 	</div>
 	<Header {data} />
