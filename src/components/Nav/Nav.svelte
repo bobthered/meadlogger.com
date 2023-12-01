@@ -1,9 +1,21 @@
 <script lang="ts">
 	import { Nav } from 'sveltewind/components';
 	import { twMerge } from 'tailwind-merge';
-	import { Button, NavItem, Overlay } from '$components';
-	import { ArrowLeftOnRectangle, Home, Plus } from '$icons';
+	import { Button, NavGroup, NavItem, Overlay } from '$components';
+	import { ArrowLeftOnRectangle, Home, Plus, type IconSource, Cog6Tooth } from '$icons';
 	import { theme } from '$stores';
+
+	// types
+	type NavItem = {
+		children?: NavItem[];
+		href?: string;
+		isAdminRequired?: boolean;
+		isShown?: boolean;
+		isShownLg?: boolean;
+		label: string;
+		src?: IconSource;
+	};
+	type Nav = NavItem[];
 
 	// props (external)
 	export let close = () => (isOpen = false);
@@ -24,22 +36,78 @@
 			false: 'mt-[.25rem]'
 		}
 	];
-	const navsCommon = [
-		{ href: '/dashboard', isShown: true, isShownLG: true, label: 'Dashboard', src: Home },
-		{ href: '/add/batch', isShown: true, isShownLG: true, label: 'Add Batch', src: Plus }
-	];
-	const navsAdmin = [
+	const nav: Nav = [
 		{
-			href: '/add/batch-type',
-			isShown: false,
-			isShownLG: true,
-			label: 'Add Batch Type',
-			src: Plus
+			href: '/dashboard',
+			isShown: true,
+			isShownLg: true,
+			label: 'Dashboard',
+			src: Home
 		},
-		{ href: '/add/volume', isShown: false, isShownLG: true, label: 'Add Volume', src: Plus },
-		{ href: '/add/yeast', isShown: false, isShownLG: true, label: 'Add Yeast', src: Plus }
+		{
+			label: 'Account',
+			children: [
+				{
+					href: '/account/change-password',
+					isShown: false,
+					isShownLg: true,
+					label: 'Change Password',
+					src: Cog6Tooth
+				}
+			]
+		},
+		{
+			label: 'Batch',
+			children: [
+				{
+					href: '/batch/add',
+					isShown: true,
+					isShownLg: true,
+					label: 'Add',
+					src: Plus
+				},
+				{
+					label: 'Type',
+					children: [
+						{
+							href: '/batch/type/add',
+							isAdminRequired: true,
+							isShown: false,
+							isShownLg: true,
+							label: 'Add',
+							src: Plus
+						}
+					]
+				}
+			]
+		},
+		{
+			label: 'Volume',
+			children: [
+				{
+					href: '/volume/add',
+					isAdminRequired: true,
+					isShown: false,
+					isShownLg: true,
+					label: 'Add',
+					src: Plus
+				}
+			]
+		},
+		{
+			label: 'Yeast',
+			children: [
+				{
+					href: '/yeast/add',
+					isAdminRequired: true,
+					isShown: false,
+					isShownLg: true,
+					label: 'Add',
+					src: Plus
+				}
+			]
+		}
 	];
-	$: navs = [...navsCommon, ...(data?.user?.isAdmin ? navsAdmin : [])];
 </script>
 
 <Button
@@ -63,19 +131,26 @@
 />
 <Nav class={twMerge(isOpen ? 'lg:translate-x-0' : 'lg:-translate-x-full')}>
 	<div class="hidden lg:flex lg:flex-col">
-		{#each navs as { href, isShown, isShownLG, label, src }}
-			<NavItem {close} {href} {isOpen} {isShown} {isShownLG} {label} {src} />
+		{#each nav as navItem}
+			{#if (navItem?.isAdminRequired && data.user.isAdmin) || navItem?.isAdminRequired === false || navItem?.isAdminRequired === undefined}
+				{#if navItem?.children !== undefined}
+					<NavGroup {...navItem} {close} user={data.user} />
+				{/if}
+				{#if navItem?.children === undefined}
+					<NavItem {...navItem} {close} user={data.user} />
+				{/if}
+			{/if}
 		{/each}
 	</div>
-	{#each navs as { href, isShown, isShownLG, label, src }}
-		<NavItem class="lg:hidden" {close} {href} {isOpen} {isShown} {isShownLG} {label} {src} />
-	{/each}
+	<!-- {#each nav as { href, isShown, isShownLg, label, src }}
+		<NavItem class="lg:hidden" {close} {href} {isOpen} {isShown} {isShownLg} {label} {src} />
+	{/each} -->
 	<NavItem
 		{close}
 		href="/sign-out"
 		{isOpen}
 		isShown={true}
-		isShownLG={true}
+		isShownLg={true}
 		label="Sign Out"
 		src={ArrowLeftOnRectangle}
 	/>

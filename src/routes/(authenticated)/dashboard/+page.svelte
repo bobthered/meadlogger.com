@@ -36,7 +36,7 @@
 										$theme.buttonXS,
 										'dark:hover:text-violet-900'
 									)}
-									href="/batch/{id}"
+									href="/batch/edit/{id}"
 								>
 									<Icon src={Pencil} />
 								</A>

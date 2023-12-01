@@ -9,19 +9,19 @@
 	export let close;
 	export let href = '';
 	export let isOpen = false;
-	export let isShown = true;
-	export let isShownLG = true;
+	export let isShown: boolean | undefined = true;
+	export let isShownLg: boolean | undefined = true;
 	export let label = '';
 	export let src = Plus;
 
 	$: classes = twMerge(
 		$theme.button,
-		'hover:text-violet-900 focus:text-violet-900 py-2 flex flex-col rounded-none flex-grow text-center items-center lg:flex-grow-0 lg:bg-transparent lg:items-start lg:text-current normal-case font-normal',
+		'shadow-[inset_0_0_0_rgba(0,0,0,0)] hover:text-violet-900 focus:text-violet-900 py-2 flex flex-col rounded-none flex-grow text-center items-center lg:flex-grow-0 lg:bg-transparent lg:items-start lg:text-current normal-case font-normal',
 		$page.url.pathname === href
 			? 'lg:bg-violet-500 lg:text-violet-900 lg:hover:bg-violet-500 lg:focus:bg-violet-500 lg:cursor-default'
 			: undefined,
 		isShown ? undefined : 'hidden',
-		isShownLG ? 'lg:block' : 'lg:hidden',
+		isShownLg ? 'lg:block' : 'lg:hidden',
 		$$props.class
 	);
 	$: tabindex = !isOpen || $page.url.pathname === href ? '-1' : undefined;

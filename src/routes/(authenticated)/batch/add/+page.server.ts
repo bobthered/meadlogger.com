@@ -14,7 +14,7 @@ export const actions = {
 			data
 		});
 
-		throw redirect(303, `/batch/${id}`);
+		throw redirect(303, `/batch/edit/${id}`);
 	}
 };
 
