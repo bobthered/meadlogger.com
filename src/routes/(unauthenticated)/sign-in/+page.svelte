@@ -37,9 +37,9 @@
 		</div>
 		<div class="flex flex-col space-y-2">
 			<Button type="submit">{buttonPrimaryText}</Button>
-			<A class={twMerge($theme.button, $theme.buttonSecondary)} href={buttonSecondaryHref}>
+			<!-- <A class={twMerge($theme.button, $theme.buttonSecondary)} href={buttonSecondaryHref}>
 				{buttonSecondaryText}
-			</A>
+			</A> -->
 		</div>
 	</Form>
 </Card>
