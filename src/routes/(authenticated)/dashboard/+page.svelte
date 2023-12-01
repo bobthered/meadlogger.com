@@ -19,10 +19,13 @@
 		<Table>
 			<Thead>
 				<Th></Th>
+				<Th>Type</Th>
+				<Th>Name</Th>
 				<Th>Date (Pitched)</Th>
+				<Th>Size</Th>
 			</Thead>
 			<Tbody>
-				{#each data.batches as { id, datePitched }}
+				{#each data.batches as { datePitched, id, name, size, sizeUOM, type }}
 					<Tr>
 						<Td class="py-0 px-0">
 							<div class="flex space-x-2">
@@ -48,7 +51,10 @@
 								</Form>
 							</div>
 						</Td>
+						<Td>{type.name}</Td>
+						<Td>{name}</Td>
 						<Td>{DateTime.fromFormat(datePitched, 'yyyy-MM-dd').toFormat('M/d/yyyy')}</Td>
+						<Td>{size} {sizeUOM.name}</Td>
 					</Tr>
 				{/each}
 			</Tbody>

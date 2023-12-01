@@ -4,13 +4,14 @@ import { prisma } from '$lib/prisma';
 
 export const actions = {
 	default: async ({ locals, request }) => {
-		let { batchSize, batchSizeUOM, datePitched } = Object.fromEntries(await request.formData());
-		batchSize = parseFloat(batchSize);
-		const batchSizeUOMid = new ObjectId(batchSizeUOM);
-		const userId = new ObjectId(locals.user.id);
+		const data = Object.fromEntries(await request.formData());
+		data.size = parseFloat(data.size);
+		data.sizeUOMid = new ObjectId(data.sizeUOMid);
+		data.typeId = new ObjectId(data.typeId);
+		data.userId = new ObjectId(locals.user.id);
 
 		const { id } = await prisma.batch.create({
-			data: { batchSize, batchSizeUOMid, datePitched, userId }
+			data
 		});
 
 		throw redirect(303, `/batch/${id}`);
@@ -18,6 +19,10 @@ export const actions = {
 };
 
 export const load = async () => {
-	const volumes = await prisma.volume.findMany({ orderBy: [{ name: 'asc' }] });
-	return { volumes };
+	const [batchTypes, volumes] = await Promise.all(
+		['batchType', 'volume'].map(
+			async (key) => await prisma[key].findMany({ orderBy: [{ name: 'asc' }] })
+		)
+	);
+	return { batchTypes, volumes };
 };

@@ -7,13 +7,20 @@
 	export let data;
 
 	// props (internal)
-	let batchSize = '';
-	let batchSizeUOM = '';
 	let datePitched = DateTime.now().toFormat('yyyy-MM-dd');
+	let name = '';
+	let size = '';
+	let sizeUOMid = '';
+	let typeId = '';
 
 	// props (dynamic)
-	$: if (data?.volumes.length > 0 && batchSizeUOM === '')
-		batchSizeUOM = data.volumes.find(({ name }) => name === 'Gallon(s)').id;
+	$: if (data?.batchTypes.length > 0 && typeId === '')
+		typeId = data.batchTypes.find(({ name }) => name === 'Mead').id;
+	$: typeOptions = data?.batchTypes?.map(({ id, name }) => {
+		return { label: name, value: id };
+	});
+	$: if (data?.volumes.length > 0 && sizeUOMid === '')
+		sizeUOMid = data.volumes.find(({ name }) => name === 'Gallon(s)').id;
 	$: volumeUOMOptions = data?.volumes?.map(({ id, name }) => {
 		return { label: name, value: id };
 	});
@@ -26,16 +33,22 @@
 				<Fieldset legend="Date (Pitched)">
 					<Input bind:value={datePitched} name="datePitched" required="required" type="date" />
 				</Fieldset>
+				<Fieldset legend="Name">
+					<Input bind:value={name} name="name" required="required" />
+				</Fieldset>
+				<Fieldset legend="Type">
+					<Select bind:value={typeId} name="typeId" options={typeOptions} required="required" />
+				</Fieldset>
 				<Fieldset legend="Batch Size">
 					<div class="flex space-x-2">
 						<Input
-							bind:value={batchSize}
+							bind:value={size}
 							class="w-full"
-							name="batchSize"
+							name="size"
 							required="required"
-							inputmode="numeric"
+							inputmode="decimal"
 						/>
-						<Select bind:value={batchSizeUOM} name="batchSizeUOM" options={volumeUOMOptions} />
+						<Select bind:value={sizeUOMid} name="sizeUOMid" options={volumeUOMOptions} />
 					</div>
 				</Fieldset>
 			</div>

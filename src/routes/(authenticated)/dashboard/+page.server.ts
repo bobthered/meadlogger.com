@@ -15,6 +15,10 @@ export const load = async ({ locals }) => {
 	const user = locals;
 	const batches = await prisma.batch.findMany({
 		where: { userId: user.id },
+		include: {
+			type: true,
+			sizeUOM: true
+		},
 		orderBy: [{ datePitched: 'desc' }]
 	});
 	return { batches };

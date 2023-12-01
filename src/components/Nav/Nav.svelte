@@ -29,6 +29,13 @@
 		{ href: '/add/batch', isShown: true, isShownLG: true, label: 'Add Batch', src: Plus }
 	];
 	const navsAdmin = [
+		{
+			href: '/add/batch-type',
+			isShown: false,
+			isShownLG: true,
+			label: 'Add Batch Type',
+			src: Plus
+		},
 		{ href: '/add/volume', isShown: false, isShownLG: true, label: 'Add Volume', src: Plus },
 		{ href: '/add/yeast', isShown: false, isShownLG: true, label: 'Add Yeast', src: Plus }
 	];
