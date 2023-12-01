@@ -26,7 +26,7 @@
 		</div>
 		<div class="flex flex-col space-y-2">
 			<Fieldset legend="Email">
-				<Input bind:email name="email" required="required" type="email" />
+				<Input bind:email inputmode="email" name="email" required="required" type="email" />
 			</Fieldset>
 			<Fieldset legend="Password">
 				<Input bind:password name="password" required="required" type="password" />
