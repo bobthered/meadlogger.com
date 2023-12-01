@@ -19,8 +19,7 @@
 	$: typeOptions = data?.batchTypes?.map(({ id, name }) => {
 		return { label: name, value: id };
 	});
-	$: if (data?.volumes.length > 0 && sizeUOMid === '')
-		sizeUOMid = data.volumes.find(({ name }) => name === 'Gallon(s)').id;
+	$: if (data?.user && sizeUOMid === '') sizeUOMid = data.user.defaultBatchSizeUOM.id;
 	$: volumeUOMOptions = data?.volumes?.map(({ id, name }) => {
 		return { label: name, value: id };
 	});

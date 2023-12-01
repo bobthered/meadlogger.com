@@ -30,18 +30,21 @@ model BatchType {
 }
 
 model User {
-  id           String  @id @default(auto()) @map("_id") @db.ObjectId
-  email        String  @unique
-  isActive     Boolean @default(true)
-  isAdmin      Boolean @default(false)
-  passwordHash String
-  batches      Batch[]
+  id                    String  @id @default(auto()) @map("_id") @db.ObjectId
+  defaultBatchSizeUOM   Volume  @relation(fields: [defaultBatchSizeUOMid], references: [id])
+  defaultBatchSizeUOMid String  @db.ObjectId
+  email                 String  @unique
+  isActive              Boolean @default(true)
+  isAdmin               Boolean @default(false)
+  passwordHash          String
+  batches               Batch[]
 }
 
 model Volume {
-  id      String  @id @default(auto()) @map("_id") @db.ObjectId
-  name    String  @unique
-  batches Batch[]
+  id                   String  @id @default(auto()) @map("_id") @db.ObjectId
+  name                 String  @unique
+  batches              Batch[]
+  defaultUserBatchSize User[]
 }
 
 model Yeast {

@@ -6,7 +6,10 @@ export const handle = async ({ event, resolve }) => {
 		const id = event.cookies.get('session_id');
 		if (id === undefined)
 			return new Response('Redirect', { status: 303, headers: { Location: '/sign-in' } });
-		const user = await prisma.user.findUnique({ where: { id } });
+		const user = await prisma.user.findUnique({
+			where: { id },
+			include: { defaultBatchSizeUOM: true }
+		});
 		if (user === null)
 			return new Response('Redirect', { status: 303, headers: { Location: '/sign-in' } });
 		delete user.passwordHash;
